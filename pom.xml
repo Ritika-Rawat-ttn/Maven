@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>Maven-Project</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+
+        <!---test =This scope indicates that the dependency is not required for normal use of the application,
+        and is only available for the test compilation and execution phases. This scope is not transitive.-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>[4.1]</version>
+            <scope>test</scope>
+        </dependency>
+
+
+<!--Provided=This is much like compile, but indicates you expect the JDK or a container to provide the dependency at runtime. -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.0.6.Final</version>
+            <scope>provided</scope>
+
+
+
+        </dependency>
+
+        <!-- Runtime =This scope indicates that the dependency is not required for compilation, but is for execution.
+        Maven includes a dependency with this scope in the runtime and test classpaths, but not the compile classpath.-->
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.26</version>
+            <scope>runtime</scope>
+        </dependency>
+
+
+        <!--compile=This is the default scope, used if none is specified.
+        Compile dependencies are available in all classpaths of a project.
+        Furthermore, those dependencies are propagated to dependent projects.-->
+
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+            <version>3.3.0.Final</version>
+            <scope>compile</scope>
+        </dependency>
+
+
+
+
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <!-- here we specify that we want to use the main method within the App class -->
+                            <mainClass>org.example.App</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+    <!--Using junit dependencies which used for unit testing which is in Central repo-->
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Maven Central</name>
+            <url>https://repo1.maven.org/maven2/</url>
+        </repository>
+    </repositories>
+
+
+
+    <!-- <repositories><repository>
+         <id>my-repo1</id>
+         <name>my custom repo</name>
+         <url>http://jarsm2.dyndns.dk</url>
+     </repository></repositories>
+ -->
+
+
+
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+</project>
